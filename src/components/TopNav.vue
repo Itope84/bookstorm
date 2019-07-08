@@ -44,7 +44,7 @@
             <div class="my-2 my-lg-0" v-else>
               
               <router-link to="/signup" class="btn mr-2 btn-white btn-rounded px-4 shadow-lg">My Profile</router-link>
-              <button to="/login" class="btn flat-btn-accent btn-rounded text-white px-4">Logout</button>
+              <button @click="logout" class="btn flat-btn-accent btn-rounded text-white px-4">Logout</button>
             </div>
           </div>
         </div>
@@ -57,6 +57,12 @@ export default {
     computed: {
         loggedIn () {
             return !!localStorage.getItem('token')
+        }
+    },
+    methods: {
+        logout () {
+            localStorage.removeItem('token')
+            window.location.reload()
         }
     }
 }

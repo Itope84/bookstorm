@@ -8,18 +8,15 @@
         </div>
 
         <div>
-          <a href class="btn btn-primary rounded-0 btn-sm">
+          <a href class="btn btn-primary rounded-0 btn-sm" @click.prevent="$modal.show('question-form')">
             <i class="fas fa-plus-circle"></i> Ask New Question
           </a>
         </div>
       </div>
       <div class="card rounded-0">
-        <question-item></question-item>
-        <question-item></question-item>
-        <question-item></question-item>
-        <question-item></question-item>
+        <question-item v-for="question in questions" :key="question.id" :question="question"></question-item>
         <div class="text-center py-2">
-          <a href>View All</a>
+          <router-link to="/peer-assist" href>View All</router-link>
         </div>
       </div>
 
@@ -32,32 +29,16 @@
         </div>
 
         <div>
-          <a href class="btn btn-primary rounded-0 btn-sm">
+          <a href="#" class="btn btn-primary rounded-0 btn-sm">
             <i class="fas fa-plus-circle"></i> New Upload
           </a>
         </div>
       </div>
       <carousel :pagination-enabled="false" :per-page-custom="[[1024, 3]]">
-        <slide>
-          <material-item></material-item>
+        <slide v-for="material in materials" :key="material.id">
+          <material-item :material="material"></material-item>
         </slide>
 
-        <slide>
-          <material-item></material-item>
-        </slide>
-
-        <slide>
-          <material-item></material-item>
-        </slide>
-
-        <slide>
-          <material-item></material-item>
-        </slide>
-
-        <slide>
-          <material-item></material-item>
-        </slide>
-        
       </carousel>
     </div>
   </main-layout>
@@ -78,6 +59,24 @@ export default {
       questions: [],
       materials: []
     };
+  },
+
+  mounted () {
+      axios.get('/materials', {
+          params: {
+              perpage: 5
+          }
+      }).then(response => {
+          this.materials = response.data.data
+      })
+
+      axios.get('/questions', {
+          params: {
+              perpage: 5
+          }
+      }).then(response => {
+          this.questions = response.data.data
+      })
   }
 };
 </script>

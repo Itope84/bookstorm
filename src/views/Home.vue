@@ -27,20 +27,30 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Materials</a>
               </li>
-              
+
               <li class="nav-item">
                 <router-link class="nav-link" to="/peer-assist">Peer Assist</router-link>
               </li>
-              
 
               <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
               </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-              <router-link to="/login" href="#" class="btn flat-btn-accent btn-rounded px-4 mr-2">Login</router-link>
+            <div class="my-2 my-lg-0" v-if="!loggedIn">
+              <router-link
+                to="/login"
+                class="btn flat-btn-accent btn-rounded text-white px-4 mr-2"
+              >Login</router-link>
               <router-link to="/signup" class="btn btn-white btn-rounded px-4 shadow-lg">Sign Up</router-link>
-            </form>
+            </div>
+
+            <div class="my-2 my-lg-0" v-else>
+              <router-link
+                to="#"
+                class="btn mr-2 btn-white btn-rounded px-4 shadow-lg"
+              >My Profile</router-link>
+              <button to="/login" class="btn flat-btn-accent btn-rounded text-white px-4">Logout</button>
+            </div>
           </div>
         </div>
       </nav>
@@ -106,11 +116,10 @@
               </div>
 
               <div class="mt-auto text-center">
-                <p class="title mb-3">Learn anything online</p>
-                <p class="small">
-                  You need to be sure there isn't anything
-                  embarrassing hidden
-                </p>
+                <p class="title mb-3">Access to a large pool of learning material</p>
+                <p
+                  class="small"
+                >You're no longer limited to your school. You can now compare notes with students of similar courses across different schools</p>
               </div>
               <!-- <span class="h1 text-secondary"><i class="fas fa-book-open"></i></span> -->
             </div>
@@ -136,11 +145,10 @@
               </div>
 
               <div class="mt-auto text-center">
-                <p class="title mb-3">Learn anything online</p>
-                <p class="small">
-                  You need to be sure there isn't anything
-                  embarrassing hidden
-                </p>
+                <p class="title mb-3">Less pointless googling</p>
+                <p
+                  class="small"
+                >So, you have an impossible homework to which you can't find solutions online? Let your peers help you out!</p>
               </div>
               <!-- <span class="h1 text-secondary"><i class="fas fa-book-open"></i></span> -->
             </div>
@@ -166,11 +174,10 @@
               </div>
 
               <div class="mt-auto text-center">
-                <p class="title mb-3">Learn anything online</p>
-                <p class="small">
-                  You need to be sure there isn't anything
-                  embarrassing hidden
-                </p>
+                <p class="title mb-3">Smart Recommendations</p>
+                <p
+                  class="small"
+                >You get notified whenever a new material is released that might be important to you!</p>
               </div>
               <!-- <span class="h1 text-secondary"><i class="fas fa-book-open"></i></span> -->
             </div>
@@ -181,9 +188,7 @@
       <section class="text-center mt-5 py-4 d-flex flex-column align-items-center">
         <h3 class="h4 my-3 font-weight-bold">Recent Uploads</h3>
         <p style="max-width: 500px;" class="small text-muted">
-          You need to be sure there isn't anything embarrassing
-          hidden in the middle of
-          text. All the Lorem Ipsum generators on the Internet tend
+          Here's a peek into some of the latest materials uploaded on our platform.
         </p>
       </section>
 
@@ -426,14 +431,23 @@
         </div>
       </div>
     </section>
+    <main-footer class="mt-0"></main-footer>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue";
-
+import MainFooter from "../components/MainFooter";
 export default {
-  name: "home"
+  name: "home",
+  computed: {
+    loggedIn() {
+      return !!localStorage.getItem("token");
+    }
+  },
+  components: {
+    MainFooter
+  }
 };
 </script>
