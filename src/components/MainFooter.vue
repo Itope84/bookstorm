@@ -2,7 +2,7 @@
   <footer class="bg-secondary py-5" style="margin-top:30px">
     <div class="container">
       <div
-        class="row links px-md-5 text-center text-left"
+        class="row links px-md-5 text-left"
       >
         <div class="col-md-5 mr-auto link-subgroup">
           <h3>Bookstorm</h3>
