@@ -1,14 +1,14 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+  <div id="app" class="bg-light">
+    
     <router-view />
   </div>
 </template>
 
 <style lang="scss">
+@import "./assets/scss/variables";
+@import "bootstrap-scss/bootstrap.scss";
+@import "./assets/scss/custom";
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
