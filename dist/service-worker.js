@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.4c1e23287fdb0574a84904f396435c04.js"
+  "/precache-manifest.2c4b50eb3042bad6b5c4044930271f71.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "bookstorm"});
