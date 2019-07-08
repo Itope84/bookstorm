@@ -1,9 +1,19 @@
 <template>
   <div id="app" class="bg-light">
-    
+    <question-modal></question-modal>
+    <notifications group="alert" position="bottom right"/>    
     <router-view />
   </div>
 </template>
+<script>
+import QuestionModal from "./components/QuestionFormModal"
+export default {
+  components: {
+    QuestionModal
+  }
+}
+</script>
+
 
 <style lang="scss">
 @import "./assets/scss/variables";

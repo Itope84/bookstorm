@@ -1,9 +1,9 @@
 <template>
   <div>
     <header class="main-header py-4">
-      <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <nav class="navbar navbar-expand-lg bg-transparent">
         <div class="container">
-          <a class="navbar-brand text-white" href="#">Navbar</a>
+          <router-link class="navbar-brand text-white" to="/">Bookstorm</router-link>
           <button
             class="navbar-toggler"
             type="button"
@@ -19,17 +19,17 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="mt-0 navbar-nav mr-auto mx-md-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">
-                  Home
+                <router-link to="/feeds" class="nav-link">
+                  Feeds
                   <span class="sr-only">(current)</span>
-                </a>
+                </router-link>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Materials</a>
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" href="#">Peer Assist</a>
+                <router-link class="nav-link" to="/peer-assist">Peer Assist</router-link>
               </li>
               
 
@@ -39,7 +39,7 @@
             </ul>
             <form class="form-inline my-2 my-lg-0">
               <router-link to="/login" href="#" class="btn flat-btn-accent btn-rounded px-4 mr-2">Login</router-link>
-              <a href class="btn btn-white btn-rounded px-4 shadow-lg">Sign Up</a>
+              <router-link to="/signup" class="btn btn-white btn-rounded px-4 shadow-lg">Sign Up</router-link>
             </form>
           </div>
         </div>
@@ -190,7 +190,7 @@
       <section class="recent-uploads">
         <div class="row">
           <div class="col-sm-6 col-md-4 mb-4 d-flex justify-content-center">
-            <div class="upload-item rounded-sm">
+            <div class="upload-item rounded-sm shadow-sm">
               <div class="upload-preview">
                 <img src="@/assets/img/preview.png" class="img-fluid" alt />
               </div>
@@ -217,7 +217,7 @@
           </div>
 
           <div class="col-sm-6 col-md-4 mb-4 d-flex justify-content-center">
-            <div class="upload-item rounded-sm">
+            <div class="upload-item rounded-sm shadow-sm">
               <div class="upload-preview">
                 <img src="@/assets/img/preview.png" class="img-fluid" alt />
               </div>
@@ -245,7 +245,7 @@
           </div>
 
           <div class="col-sm-6 col-md-4 mb-4 d-flex justify-content-center">
-            <div class="upload-item rounded-sm">
+            <div class="upload-item rounded-sm shadow-sm">
               <div class="upload-preview">
                 <img src="@/assets/img/preview.png" class="img-fluid" alt />
               </div>
@@ -273,7 +273,7 @@
           </div>
 
           <div class="col-sm-6 col-md-4 mb-4 d-flex justify-content-center">
-            <div class="upload-item rounded-sm">
+            <div class="upload-item rounded-sm shadow-sm">
               <div class="upload-preview">
                 <img src="@/assets/img/preview.png" class="img-fluid" alt />
               </div>
@@ -301,7 +301,7 @@
           </div>
 
           <div class="col-sm-6 col-md-4 mb-4 d-flex justify-content-center">
-            <div class="upload-item rounded-sm">
+            <div class="upload-item rounded-sm shadow-sm">
               <div class="upload-preview">
                 <img src="@/assets/img/preview.png" class="img-fluid" alt />
               </div>
@@ -329,7 +329,7 @@
           </div>
 
           <div class="col-sm-6 col-md-4 mb-4 d-flex justify-content-center">
-            <div class="upload-item rounded-sm">
+            <div class="upload-item rounded-sm shadow-sm">
               <div class="upload-preview">
                 <img src="@/assets/img/preview.png" class="img-fluid" alt />
               </div>

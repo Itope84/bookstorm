@@ -11,14 +11,14 @@
 
               <hr align="left" class="smallhr border-primary mt-2" />
 
-              <form method="POST" action="http://jobsicle.local/login">
-                <input type="hidden" name="_token" value="cQFVCLqFIBEl58THMEhQPwUvl1FxPMH62pNpSdIA" />
+              <form method="POST" action="#" @submit.prevent="login">
                 <div class="form-group title mt-5">
                   <label for="email">Email</label>
                   <input
                     id="email"
                     type="email"
                     name="email"
+                    v-model="email"
                     placeholder="awesome@student.com"
                     required="required"
                     autofocus="autofocus"
@@ -31,6 +31,7 @@
                     id="password"
                     type="password"
                     name="password"
+                    v-model="password"
                     placeholder="******"
                     required="required"
                     class="form-control material-input"
@@ -73,14 +74,68 @@
         </div>
       </div>
     </div>
+    <main-footer></main-footer>
   </div>
 </template>
 
 <script>
 import TopNav from "../components/TopNav";
+import MainFooter from "../components/MainFooter"
 export default {
   components: {
-    TopNav
+    TopNav,
+    MainFooter
+  },
+
+  data () {
+      return {
+          email: null,
+          password: null
+      }
+  },
+
+  methods: {
+      login () {
+          axios.post('/login', {email: this.email, password: this.password}).then(response => {
+          this.$notify({
+            group: "alert",
+            title: "Done!",
+            text:
+              response.data.message || "Logged in successfully!",
+            type: "success"
+          });
+          localStorage.setItem('token', response.data.token)
+          window.axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`
+          this.$router.push('/feeds')
+        })
+        .catch(error => {
+          if (error.response) {
+            
+            this.$notify({
+              group: "alert",
+              title: '<i class="fas fa-exclamation-triangle"></i> Error',
+              text: error.response.data.error || "Sorry, those credentials don't match",
+              type: "error"
+            });
+          } else {
+            this.$notify({
+              group: "alert",
+              title: '<i class="fas fa-exclamation-triangle"></i> Error',
+              text: `Please check your internet connection
+                        `,
+              type: "error"
+            });
+          }
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+      }
+  },
+  beforeMount () {
+      if(localStorage.getItem('token')) {
+          this.$router.push('/feeds')
+      }
   }
 };
 </script>

@@ -1,6 +1,6 @@
  
   * {
-    transition-duration: 0.5s;
+    // transition-duration: 0.5s;
   }
   
   body * {
@@ -41,11 +41,17 @@
   }
   
   .main-header .navbar-nav .nav-link {
-    color: #fff;
+    color: #dedede;
+    &:hover, &.active {
+        color: #fff;
+    }
   }
 
   .navbar-wrapper .navbar-nav .nav-link {
-    color: #fff;
+    color: #dedede;
+    &:hover, &.active {
+        color: #fff;
+    }
   }
   
   
@@ -218,12 +224,12 @@
 
 .navbar-nav {
     .nav-item {
-        border-bottom: 1.5px solid transparent;
+        // border-bottom: 1.5px solid transparent;
         margin-left: 0.5rem;
         margin-right: 0.5rem;
 
         &:hover {
-            border-bottom-color: #fff;
+            // border-bottom-color: #fff;
         }
     }
 }
@@ -233,7 +239,7 @@
     border-color: $primary;
 }
 
-.material-input.form-control {
+.material-input.form-control, .material-input.form-control.custom-select {
     border-radius: 0;
     border: none;
     border-bottom: 1px solid #ccc;
@@ -245,6 +251,10 @@
 .smallhr {
     width: 20%;
     border-top-width: 2px;
+
+    &.white {
+        border-top-color: #fff;
+    }
 }
 
 .flat-btn-accent {
@@ -262,4 +272,19 @@
 
 a:hover {
     text-decoration: none;
+}
+
+footer a {
+    color: #cecece;
+}
+
+footer a:hover {
+    color: #fff;
+}
+
+.body a:not(.btn) {
+    color: inherit;
+    &:hover {
+        color: $primary;
+    }
 }
